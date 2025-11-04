@@ -11,11 +11,17 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Cristiano Ronaldo dos Santos Aveiro",
-                afirmacao: "Você é uma pessoa ambiciosa e tem dedicação em tudo o que faz.",
+                afirmacao:[
+                     "Você é uma pessoa ambiciosa e tem dedicação em tudo o que faz.",
+                     "Você acredita que a excelência vem da disciplina e da paixão pelo que se faz."
+                ]
             },
             {
                 texto: "Lionel Andrés Messi Cuccittini",
-                afirmacao: "Você valoriza o talento, trabalho duro e nunca desiste."
+                afirmacao:[
+                "Você valoriza o talento, trabalho duro e nunca desiste.",
+                "Você valoriza quem transforma talento em legado dentro do esporte."
+                ]
             }
         ]
     },
@@ -24,11 +30,16 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Neymar da Silva Santos Júnior",
-                afirmacao: "Você valoriza o impacto e habilidades."
+                afirmacao: [
+                "Você valoriza o impacto e habilidades.",
+                "Você se inspira em quem representa a alegria e o orgulho de um povo."
+            ]
             },
             {
                 texto: "Edson Arantes do Nascimento (Pelé)",
-                afirmacao: " Você valoriza a história e conquistas.,"
+                afirmacao: [" Você valoriza a história e conquistas.",
+                    "Você valoriza quem marcou gerações e levou o nome do Brasil ao topo."
+                ]
             }
         ]
     },
@@ -37,11 +48,15 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Masour Ousmane Dembélé",
-                afirmacao: "Você valoriza a criatividade e companheirismo. ",
+                afirmacao: ["Você valoriza a criatividade e companheirismo. ",
+                    "Você admira quem prova seu valor com desempenho e constância."
+                ]
             },
             {
                 texto: "Raphael Dias Belloli (Raphinha)",
-                afirmacao: " Você valoriza o trabalho duro e esforço."
+                afirmacao: ["Você valoriza o trabalho duro e esforço.",
+                    "Você acredita que o reconhecimento vem para quem se dedica todos os dias."
+                ]
             }
         ]
     },
@@ -50,11 +65,15 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Karim Mostafa Benzema",
-                afirmacao: "Você prefere um atacante que participa da jogada."
+                afirmacao: ["Você prefere um atacante que participa da jogada.",
+                    "Você valoriza quem joga com inteligência e sabe decidir o jogo."
+                ]
             },
             {
                 texto: "Robert Lewandowski",
-                afirmacao: "Você prefere um centroavante matador."
+                afirmacao: ["Você prefere um centroavante matador.",
+                    "Você acredita que o importante é contribuir para o time, seja marcando ou criando jogadas."
+                ]
             }
         ]
     },
@@ -63,11 +82,14 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Manuel Peter Neuer ",
-                afirmacao: "Você prioriza conquistas e como atuou no futebol."
+                afirmacao: ["Você prioriza conquistas e como atuou no futebol.",
+                    "Você admira quem transmite segurança e liderança dentro de campo."
+                ]
             },
             {
                 texto: " Lev Ivanovich Yashin",
-                afirmacao: "Você prioriza atuações, qualidade e prêmios individuais."
+                afirmacao: ["Você prioriza atuações, qualidade e prêmios individuais.",
+                    "Você valoriza quem faz história com defesas inesquecíveis e caráter exemplar."]
             }
         ]
     },
