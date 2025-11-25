@@ -1,138 +1,61 @@
+import { aleatorio } from "./aleatorio.js";
+import { perguntas } from "./perguntas.js";
+
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
+const botaoJogarNovamente = document.querySelector(".novamente-btn");
 
 
-const perguntas = [
-    {
-        enunciado: "Pergunta 1 - Quem é o Melhor do Mundo no Futebol?",
-        alternativas: [
-            {
-                texto: "Cristiano Ronaldo dos Santos Aveiro",
-                afirmacao:[
-                     "Você é uma pessoa ambiciosa e tem dedicação em tudo o que faz.",
-                     "Você acredita que a excelência vem da disciplina e da paixão pelo que se faz."
-                ]
-            },
-            {
-                texto: "Lionel Andrés Messi Cuccittini",
-                afirmacao:[
-                "Você valoriza o talento, trabalho duro e nunca desiste.",
-                "Você valoriza quem transforma talento em legado dentro do esporte."
-                ]
-            }
-        ]
-    },
-    {
-        enunciado: " Quem é o maior ídolo da seleção brasileira?",
-        alternativas: [
-            {
-                texto: "Neymar da Silva Santos Júnior",
-                afirmacao: [
-                "Você valoriza o impacto e habilidades.",
-                "Você se inspira em quem representa a alegria e o orgulho de um povo."
-            ]
-            },
-            {
-                texto: "Edson Arantes do Nascimento (Pelé)",
-                afirmacao: [" Você valoriza a história e conquistas.",
-                    "Você valoriza quem marcou gerações e levou o nome do Brasil ao topo."
-                ]
-            }
-        ]
-    },
-    {
-        enunciado: "Quem merece a bola de ouro 2025?",
-        alternativas: [
-            {
-                texto: "Masour Ousmane Dembélé",
-                afirmacao: ["Você valoriza a criatividade e companheirismo. ",
-                    "Você admira quem prova seu valor com desempenho e constância."
-                ]
-            },
-            {
-                texto: "Raphael Dias Belloli (Raphinha)",
-                afirmacao: ["Você valoriza o trabalho duro e esforço.",
-                    "Você acredita que o reconhecimento vem para quem se dedica todos os dias."
-                ]
-            }
-        ]
-    },
-    {
-        enunciado: " Você prefere qual tipo de Centroavante?",
-        alternativas: [
-            {
-                texto: "Karim Mostafa Benzema",
-                afirmacao: ["Você prefere um atacante que participa da jogada.",
-                    "Você valoriza quem joga com inteligência e sabe decidir o jogo."
-                ]
-            },
-            {
-                texto: "Robert Lewandowski",
-                afirmacao: ["Você prefere um centroavante matador.",
-                    "Você acredita que o importante é contribuir para o time, seja marcando ou criando jogadas."
-                ]
-            }
-        ]
-    },
-    {
-        enunciado: " Qual melhor goleiro que já passou pelo futebol?",
-        alternativas: [
-            {
-                texto: "Manuel Peter Neuer ",
-                afirmacao: ["Você prioriza conquistas e como atuou no futebol.",
-                    "Você admira quem transmite segurança e liderança dentro de campo."
-                ]
-            },
-            {
-                texto: " Lev Ivanovich Yashin",
-                afirmacao: ["Você prioriza atuações, qualidade e prêmios individuais.",
-                    "Você valoriza quem faz história com defesas inesquecíveis e caráter exemplar."]
-            }
-        ]
-    },
-];
 
 let atual = 0;
 let perguntaAtual;
 let historiaFinal = " ";
 
-function mostraPergunta(){
-    if (atual >= perguntas.length){
-        mostraResultado();
-        return;
-    }
+function mostraPergunta() {
 
-    perguntaAtual = perguntas[atual];
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = " ";
-    mostraAlternativas();
+if (atual >= perguntas.length) {
+mostraResultado();
+return;
 }
 
-function mostraAlternativas(){
-    for (const alternativa of perguntaAtual.alternativas){
-        const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click",() => respostaSelecionada(alternativa));
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
+perguntaAtual = perguntas[atual];
+caixaPerguntas.textContent = perguntaAtual.enunciado;
+caixaAlternativas.textContent = " ";
+mostraAlternativas();
 }
 
-function respostaSelecionada(opcaoSelecionada){
-    const afirmacoes = opcaoSelecionada.afirmacao;
-    historiaFinal += afirmacoes + " ";
-    atual++;
-    mostraPergunta();
+function mostraAlternativas() {
+for (const alternativa of perguntaAtual.alternativas) {
+const botaoAlternativas = document.createElement("button");
+botaoAlternativas.textContent = alternativa.texto;
+botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+caixaAlternativas.appendChild(botaoAlternativas);
+}
 }
 
-function mostraResultado(){
-    caixaPerguntas.textContent = "Ao analisar suas escolhas de jogador, determinamos que você...";
-    textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = " ";
+function respostaSelecionada(opcaoSelecionada) {
+const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
+historiaFinal += afirmacoes + " ";
+atual++;
+mostraPergunta();
 }
 
+function mostraResultado() {
+caixaPerguntas.textContent = "Se fosse possível traduzir sua forma de aprender em palavras, diríamos que...";
+textoResultado.textContent = historiaFinal;
+caixaAlternativas.textContent = " ";
+caixaResultado.classList.add("mostrar");
+botaoJogarNovamente.addEventListener("click", jogaNovamente);
+}
 
+function jogaNovamente(){
+atual = 0;
+historiaFinal = " ";
+caixaResultado.classList.remove("mostrar");
+mostraPergunta();
+}
 
 mostraPergunta();
